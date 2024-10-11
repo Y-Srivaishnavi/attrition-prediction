@@ -4,14 +4,14 @@ import pickle
 
 @st.cache_resource
 def load_model():
-    with open("modelAttrition.pkl", 'rb') as pFile:
+    with open("pickled/modelAttrition.pkl", 'rb') as pFile:
         model = pickle.load(pFile)
     return model
 
 def prep_data(input_data:dict)->pd.DataFrame:
     df = pd.DataFrame(input_data, index=[1])
 
-    with open('labelEncoder.pkl', 'rb') as enc_file:
+    with open('pickled/labelEncoder.pkl', 'rb') as enc_file:
         encoder = pickle.load(enc_file)
         nonint_attributes = ['BusinessTravel', 'Department', 'EducationField', 'Gender', 'JobRole', 'MaritalStatus', 'OverTime']
 
